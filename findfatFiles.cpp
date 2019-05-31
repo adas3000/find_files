@@ -22,9 +22,9 @@ int main()
 	std::string drive;
 	int Limit_MB;
 
-	std::cout << "Write patch to search : \n";
+	std::cout << "Write patch to search :(endup with /) \n";
 	std::cin >> drive;
-	std::cout << "From how many MB search files ? : \n";
+	std::cout << "From how many MB start searching? : \n";
 	std::cin >> Limit_MB;
 
 	if (drive.size() < 3 && drive.size() >= 2)
