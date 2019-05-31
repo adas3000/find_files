@@ -25,7 +25,7 @@ ManageFile::ManageFile(std::string from, int limit, std::vector<FILE>&TO):
 	from(from)
 {
 	GetFilsFromDirectory(files, from, folders_toCheck);
-	//mejbi jak dopracuje sie przyda ...
+	//in future..
 	while (!folders_toCheck.empty())
 	{
 		auto i = folders_toCheck.end() - 1;
