@@ -17,21 +17,11 @@ Manager::Manager(std::string startingPath,int limit_MB)
 	std::cout << "Searching time : " << (finish - start) / CLOCKS_PER_SEC << " seconds.\n";
 	files = new File[data.size()];
 	std::cout << data.size() << " files have been searched.\n";
-	//std::cout << "Searching for files which meet conditions.\n";
+
 	start = clock();
-	/*
-	for (int i = 0; i < data.size(); i++)
-	{
-		files[i].setPath(data[i]);
-		if (files[i].getMBSize() >= limit_MB)
-		{
-			del_data.push_back(files[i]);
-		}
-	}
-	*/
+	
 	del_data = manage->Get_Del_Files();
 	finish = clock();
-	//std::cout << data.size() << " files have been searched.\nIt took a " << (finish - start) / CLOCKS_PER_SEC << " seconds.\n";
 }
 
 
@@ -45,7 +35,7 @@ bool Manager::deleteone()
 	std::cout << "Choose the file you would like to delete" << "(1-" << del_data.size() << ")\n";;
 	for (int i = 0; i < del_data.size(); i++)
 	{
-		std::cout << i + 1 << "." << del_data[i].getFileName() << " size(MB) : " << del_data[i].getMBSize() << "\n";
+		std::cout << i + 1 << "." << del_data[i].getFileName() << " size(GB) : " << del_data[i].getGBSize() << "\n";
 	}
 
 	int which;
@@ -65,9 +55,7 @@ bool Manager::deleteone()
 
 	int check = std::remove(del_data[which - 1].getPath().c_str());
 
-	
-
-	if (!(check!=0)) // czyli check == 0
+	if (!(check!=0)) // means check == 0
 	{
 		try
 		{
@@ -82,9 +70,13 @@ bool Manager::deleteone()
 	else
 	std::cout << "Cannot delete the file!\n";
 
-	std::cout << "Click...\n";
+
+	
+
+
+	std::cout << "Continue...\n";
 	//std::cin >> mquit;
-	std::cin >> mquit;
+	char c = _getch();
 
 	return false;
 }
