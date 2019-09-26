@@ -17,7 +17,6 @@ private:
 	File *files;
 	std::vector<std::string>data; //znalezione pliki
 	std::vector<File>del_data;
-	std::vector<std::string>newFiles;
 	int limit_MB;
 public:
 	Manager(std::string startingPath,int limit_MB);

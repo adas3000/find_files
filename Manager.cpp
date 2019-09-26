@@ -32,24 +32,31 @@ Manager::~Manager()
 
 bool Manager::deleteone()
 {
+	if(del_data.size()==1)
+		std::cout << "Choose the file you would like to delete" << "1\n";
+	else
 	std::cout << "Choose the file you would like to delete" << "(1-" << del_data.size() << ")\n";;
-	for (int i = 0; i < del_data.size(); i++)
-	{
+
+
+	for (int i = 0; i < del_data.size(); i++){
 		std::cout << i + 1 << "." << del_data[i].getFileName() << " size(GB) : " << del_data[i].getGBSize() << "\n";
 	}
 
 	int which;
 	char mquit;
 	std::cin >> which;
-	std::cout << del_data[which - 1].getPath().c_str() << "\n";
 
-	std::cout << "For sure ? q to cancel ,esc to quit";
+	
+
+	std::cout << del_data[which - 1].getFileName() << "\n";
+
+	std::cout << "For sure ? q to cancel ,esc to quit\n";
 	std::cin >> mquit;
 
 	if (mquit == 'q')
 		return false;
 	else if (mquit == 27) // ESCAPE
-		return true;
+		exit(0);
 	
 	SetFileAttributesA(LPCSTR(del_data[which - 1].getPath().c_str()), FILE_ATTRIBUTE_NORMAL);
 
@@ -70,7 +77,7 @@ bool Manager::deleteone()
 	else
 	std::cout << "Cannot delete the file!\n";
 
-
+	
 	
 
 
